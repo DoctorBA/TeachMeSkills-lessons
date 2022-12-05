@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ author }}'s post</h1>
+  <br>
+  {% for post in posts %}
+    <a href="{{ url_for('post', post_id=post['id']) }}">
+    <h2>{{post['title']}} </h2>
+    </a>
+    <h4>{{post['content']}}</h4>    
+    <span class="badge bg-primary">{{post['created']}}</span>
+    <a href="{{ url_for('author', author=post['author']) }}"><h4>{{post['author']}}</h4></a>
+    <hr>
+  {% endfor %}
+{% endblock %}
